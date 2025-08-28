@@ -1,0 +1,44 @@
+
+{
+  "name": "chat_messages",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["sessionId", "message", "sender", "createdAt"],
+        "properties": {
+          "sessionId": {
+            "bsonType": "string",
+            "description": "ID da sessão do chat"
+          },
+          "message": {
+            "bsonType": "string",
+            "description": "Conteúdo da mensagem"
+          },
+          "sender": {
+            "bsonType": "string",
+            "enum": ["user", "bot"],
+            "description": "Remetente da mensagem"
+          },
+          "messageType": {
+            "bsonType": "string",
+            "enum": ["text", "quick_reply", "form", "recommendation"],
+            "description": "Tipo da mensagem"
+          },
+          "metadata": {
+            "bsonType": "object",
+            "description": "Metadados adicionais da mensagem"
+          },
+          "createdAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação ISO 8601"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

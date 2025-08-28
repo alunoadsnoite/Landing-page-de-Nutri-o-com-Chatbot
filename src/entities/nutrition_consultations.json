@@ -1,0 +1,88 @@
+
+{
+  "name": "nutrition_consultations",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["clientName", "email", "phone", "goal", "createdAt"],
+        "properties": {
+          "clientName": {
+            "bsonType": "string",
+            "description": "Nome do cliente"
+          },
+          "email": {
+            "bsonType": "string",
+            "description": "Email do cliente"
+          },
+          "phone": {
+            "bsonType": "string",
+            "description": "Telefone do cliente"
+          },
+          "age": {
+            "bsonType": "int",
+            "minimum": 1,
+            "maximum": 120,
+            "description": "Idade do cliente"
+          },
+          "goal": {
+            "bsonType": "string",
+            "enum": ["perda_peso", "ganho_massa", "manutencao", "saude_geral", "performance"],
+            "description": "Objetivo nutricional"
+          },
+          "restrictions": {
+            "bsonType": "array",
+            "description": "Restrições alimentares"
+          },
+          "currentWeight": {
+            "bsonType": "number",
+            "minimum": 1,
+            "description": "Peso atual em kg"
+          },
+          "targetWeight": {
+            "bsonType": "number",
+            "minimum": 1,
+            "description": "Peso objetivo em kg"
+          },
+          "height": {
+            "bsonType": "number",
+            "minimum": 0.5,
+            "maximum": 3.0,
+            "description": "Altura em metros"
+          },
+          "activityLevel": {
+            "bsonType": "string",
+            "enum": ["sedentario", "leve", "moderado", "intenso", "muito_intenso"],
+            "description": "Nível de atividade física"
+          },
+          "notes": {
+            "bsonType": "string",
+            "description": "Observações adicionais"
+          },
+          "status": {
+            "bsonType": "string",
+            "enum": ["pendente", "agendada", "concluida", "cancelada"],
+            "description": "Status da consulta"
+          },
+          "creator": {
+            "bsonType": "string",
+            "description": "Criador do registro"
+          },
+          "createdAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação ISO 8601"
+          },
+          "updatedAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização ISO 8601"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}
